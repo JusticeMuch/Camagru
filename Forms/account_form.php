@@ -24,11 +24,12 @@ if (login($username, $password) == 1)
     {
         $new_username = htmlspecialchars($_POST['new_username_account']);
         change_username($username, $password, $new_username);
+        $username = $new_username;
     }
     if ($_POST['new_email_check'] == '1' && htmlspecialchars($_POST['new_email_account']) != "")
     {
         $new_email = htmlspecialchars($_POST['new_email_account']);
-        change_email($username, $new_email, $password); 
+        change_email($username, $new_email, $password);
     }
     if ($_POST['new_password_check'] == '1' && htmlspecialchars($_POST['new_password_account']) != "")
     {
@@ -38,6 +39,7 @@ if (login($username, $password) == 1)
                 echo('<<script>alert ("Password too short or does not contain a digit or/and special character!!!");window.location.href="../account.php";</script>');
             }
         change_password($username, $password, $new_password);
+        $password = $new_password;
     }
     if ($_POST['new_comment_email_check'] == '1' && $_POST['new_comment_email_account'] != "")
     {
